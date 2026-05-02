@@ -1,0 +1,75 @@
+{
+  "key": "checkin",
+  "titulo": "Check-in",
+  "descricao": "Responda para registrar o check-in.",
+  "campos": [
+    {
+      "id": "nome",
+      "tipo": "texto",
+      "rotulo": "Nome",
+      "obrigatorio": true
+    },
+    {
+      "id": "idade",
+      "tipo": "numero",
+      "rotulo": "Idade",
+      "min": 0,
+      "max": 120
+    },
+    {
+      "id": "categoria",
+      "tipo": "selecao",
+      "rotulo": "Categoria",
+      "opcoes": ["A", "B", "C"],
+      "obrigatorio": true
+    },
+    {
+      "id": "data",
+      "tipo": "data",
+      "rotulo": "Data"
+    },
+    {
+      "id": "aceite",
+      "tipo": "checkbox",
+      "rotulo": "Li e concordo",
+      "obrigatorio": true
+    },
+    {
+      "id": "foto",
+      "tipo": "imagem",
+      "rotulo": "Foto",
+      "obrigatorio": false,
+      "max": 1
+    },
+    {
+      "id": "fotos_adicionais",
+      "tipo": "galeria",
+      "rotulo": "Fotos Adicionais",
+      "obrigatorio": false,
+      "max": 5
+    },
+    {
+      "id": "ir_para_feedback",
+      "tipo": "formulario",
+      "rotulo": "Continuar para Feedback",
+      "formKey": "feedback",
+      "salvarJunto": true,
+      "mapearDados": {
+        "nome": "nome",
+        "data_visita": "data"
+      }
+    }
+  ],
+  "nextForm": {
+    "formKey": "feedback",
+    "condicao": {
+      "campo": "categoria",
+      "valor": "A"
+    },
+    "mapearDados": {
+      "nome": "nome",
+      "data_visita": "data"
+    }
+  }
+}
+

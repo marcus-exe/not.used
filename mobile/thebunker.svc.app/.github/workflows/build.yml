@@ -1,0 +1,171 @@
+name: Build Release Artifacts
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    name: Build Android (APK & AAB)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create local.properties for Android
+        run: |
+          FLUTTER_ROOT=$(flutter sdk-path)
+          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+          echo "flutter.sdk=$FLUTTER_ROOT" >> android/local.properties
+
+      - name: Setup Android keystore
+        if: github.event_name == 'push'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+            echo "storePassword=$KEYSTORE_PASSWORD" > android/key.properties
+            echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
+            echo "keyAlias=${KEY_ALIAS:-upload}" >> android/key.properties
+            echo "storeFile=app/upload-keystore.jks" >> android/key.properties
+          fi
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Build AAB
+        run: flutter build appbundle --release
+
+      - name: Upload APK artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
+
+      - name: Upload AAB artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
+          retention-days: 30
+
+  build-ios:
+    name: Build iOS (IPA)
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate Flutter iOS configuration files
+        run: |
+          # Generate Flutter.xcconfig files that Podfile needs
+          flutter precache --ios
+          # Ensure Generated.xcconfig exists
+          flutter pub get
+
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install --repo-update
+          cd ..
+
+      - name: Setup iOS signing certificates
+        if: github.event_name == 'push'
+        env:
+          IOS_CERTIFICATE_BASE64: ${{ secrets.IOS_CERTIFICATE_BASE64 }}
+          IOS_CERTIFICATE_KEY_ID: ${{ secrets.IOS_CERTIFICATE_KEY_ID }}
+        run: |
+          if [ -n "$IOS_CERTIFICATE_BASE64" ] && [ -n "$IOS_CERTIFICATE_KEY_ID" ]; then
+            mkdir -p ~/private_keys
+            echo "$IOS_CERTIFICATE_BASE64" | base64 -d > ~/private_keys/AuthKey_$IOS_CERTIFICATE_KEY_ID.p8
+            chmod 600 ~/private_keys/AuthKey_$IOS_CERTIFICATE_KEY_ID.p8
+            
+            # Setup App Store Connect API key
+            mkdir -p ~/.appstoreconnect/private_keys
+            cp ~/private_keys/AuthKey_$IOS_CERTIFICATE_KEY_ID.p8 ~/.appstoreconnect/private_keys/
+          fi
+
+      - name: Configure Xcode automatic signing
+        if: github.event_name == 'push'
+        env:
+          IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+        run: |
+          if [ -n "$IOS_TEAM_ID" ]; then
+            # Set development team in Xcode project
+            /usr/libexec/PlistBuddy -c "Set :objects:97C147041CF9000F007C117D:buildSettings:DEVELOPMENT_TEAM $IOS_TEAM_ID" ios/Runner.xcodeproj/project.pbxproj 2>/dev/null || true
+            /usr/libexec/PlistBuddy -c "Set :objects:97C147071CF9000F007C117D:buildSettings:DEVELOPMENT_TEAM $IOS_TEAM_ID" ios/Runner.xcodeproj/project.pbxproj 2>/dev/null || true
+          fi
+
+      - name: Update ExportOptions.plist
+        if: github.event_name == 'push'
+        env:
+          IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+        run: |
+          if [ -n "$IOS_TEAM_ID" ]; then
+            # Replace placeholder in ExportOptions.plist
+            sed -i '' "s/\${IOS_TEAM_ID}/$IOS_TEAM_ID/g" ios/ExportOptions.plist || sed -i "s/\${IOS_TEAM_ID}/$IOS_TEAM_ID/g" ios/ExportOptions.plist
+          fi
+
+      - name: Build IPA
+        if: github.event_name == 'push'
+        env:
+          APPLE_ID: ${{ secrets.IOS_APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.IOS_APP_SPECIFIC_PASSWORD }}
+          IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+          IOS_CERTIFICATE_KEY_ID: ${{ secrets.IOS_CERTIFICATE_KEY_ID }}
+          IOS_APP_ID: ${{ secrets.IOS_APP_ID }}
+        run: |
+          if [ -n "$IOS_TEAM_ID" ]; then
+            flutter build ipa --release --export-options-plist ios/ExportOptions.plist
+          else
+            echo "iOS signing secrets not configured, skipping IPA build"
+          fi
+
+      - name: Upload IPA artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-ipa
+          path: build/ios/ipa/*.ipa
+          retention-days: 30
+        continue-on-error: true
+

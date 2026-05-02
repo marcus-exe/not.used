@@ -1,0 +1,48 @@
+{
+  "key": "feedback",
+  "titulo": "Feedback",
+  "descricao": "Compartilhe seus comentários e sugestões conosco.",
+  "oculto": true,
+  "campos": [
+    {
+      "id": "nome",
+      "tipo": "texto",
+      "rotulo": "Seu Nome",
+      "obrigatorio": true,
+      "minLength": 2,
+      "maxLength": 50
+    },
+    {
+      "id": "email",
+      "tipo": "texto",
+      "rotulo": "E-mail",
+      "obrigatorio": true,
+      "regex": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    },
+    {
+      "id": "satisfacao",
+      "tipo": "selecao",
+      "rotulo": "Nível de Satisfação",
+      "opcoes": ["Muito Satisfeito", "Satisfeito", "Neutro", "Insatisfeito", "Muito Insatisfeito"],
+      "obrigatorio": true
+    },
+    {
+      "id": "comentario",
+      "tipo": "multilinha",
+      "rotulo": "Comentários",
+      "obrigatorio": false,
+      "maxLength": 500
+    },
+    {
+      "id": "data_visita",
+      "tipo": "data",
+      "rotulo": "Data da Visita"
+    },
+    {
+      "id": "hora_visita",
+      "tipo": "hora",
+      "rotulo": "Hora da Visita"
+    }
+  ]
+}
+
