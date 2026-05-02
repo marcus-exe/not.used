@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+    <!-- This is just for test -->
+</head>
+<body>
+    <h1>Address Lookup</h1>
+
+    <form id="lookupForm">
+        <label for="cep">Enter CEP:</label>
+        <input type="text" id="cep" name="cep" required>
+        <button type="submit">Lookup Address</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('lookupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const cep = document.getElementById('cep').value;
+            const resultDiv = document.getElementById('result');
+
+            fetch(`/api/address/fetch?cep=${cep}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Render JSON response
+                    resultDiv.innerHTML = `
+                        <h2>Address Details</h2>
+                        <p><strong>Street:</strong> ${data.street}</p>
+                        <p><strong>Neighborhood:</strong> ${data.neighborhood}</p>
+                        <p><strong>Number:</strong> ${data.number}</p>
+                        <p><strong>City:</strong> ${data.city}</p>
+                        <p><strong>UF:</strong> ${data.uf}</p>
+                        <p><strong>CEP:</strong> ${data.cep}</p>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error fetching address:', error);
+                    resultDiv.innerHTML = `<p>Error fetching address. Please try again.</p>`;
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+@startuml
+interface fiap.com.example.challenge.repository.ChatRepository {
+~ List<Chat> findByEmployeeId(UUID)
+~ List<Chat> findByEmployeeIdAndStatus(UUID,ChatStatus)
+~ List<Chat> findByStartTimestampAfter(LocalDateTime)
+}
+
+class fiap.com.example.challenge.dto.MessageDTO {
+- UUID chatId
+- SenderType senderType
+- String content
++ UUID getChatId()
++ void setChatId(UUID)
++ SenderType getSenderType()
++ void setSenderType(SenderType)
++ String getContent()
++ void setContent(String)
+}
+
+
+class fiap.com.example.challenge.ChallengeApplication {
++ {static} void main(String[])
+}
+
+class fiap.com.example.challenge.service.AuthenticationService {
+- EmployeeRepository employeeRepository
++ boolean authenticate(String,String)
+}
+
+
+class fiap.com.example.challenge.controller.AddressController {
+- ApiService apiService
+- AddressService addressService
++ Address getAddress(String)
++ ResponseEntity<Address> getAddressById(UUID)
++ Address addAddress(Address)
++ List<Address> getAllAddresses()
++ ResponseEntity<Void> deleteAddress(UUID)
++ ResponseEntity<Address> updateAddress(UUID,Address)
+}
+
+
+class fiap.com.example.challenge.dto.AddressDTO {
+- String cep
+- String street
+- String complement
+- String unity
+- String neighborhood
+- String city
+- String state
+- String ibge
+- String gia
+- String ddd
+- String siafi
++ String getCep()
++ void setCep(String)
++ String getStreet()
++ void setStreet(String)
++ String getComplement()
++ void setComplement(String)
++ String getUnity()
++ void setUnity(String)
++ String getNeighborhood()
++ void setNeighborhood(String)
++ String getCity()
++ void setCity(String)
++ String getState()
++ void setState(String)
++ String getIbge()
++ void setIbge(String)
++ String getGia()
++ void setGia(String)
++ String getDdd()
++ void setDdd(String)
++ String getSiafi()
++ void setSiafi(String)
+}
+
+
+class fiap.com.example.challenge.service.MessageService {
+- MessageRepository messageRepository
++ List<Message> getAllMessages()
++ Optional<Message> getMessageById(UUID)
++ Message saveMessage(Message)
++ void deleteMessage(UUID)
+}
+
+
+interface fiap.com.example.challenge.repository.TaskRepository {
+~ List<String> findTop3BySymptomOrDescription(String)
+~ List<String> findRandomResolutions()
+}
+
+interface fiap.com.example.challenge.repository.AddressRepository {
+}
+class fiap.com.example.challenge.controller.LoginController {
+- AuthenticationService authenticationService
++ ResponseEntity<String> login(LoginDTO)
+}
+
+
+class fiap.com.example.challenge.model.employee.Employee {
+- UUID id
+- String firstName
+- String lastName
+- String email
+- String password
+- String phone
+- LocalDateTime registerDate
+- EmployeeFunction employeeFunction
+- Address address
++ UUID getId()
++ LocalDateTime getRegisterDate()
++ String getPhone()
++ void setPhone(String)
++ String getPassword()
++ void setPassword(String)
++ String getEmail()
++ void setEmail(String)
++ String getLastName()
++ void setLastName(String)
++ String getFirstName()
++ void setFirstName(String)
++ EmployeeFunction getEmployeeFunction()
++ void setEmployeeFunction(EmployeeFunction)
+}
+
+
+class fiap.com.example.challenge.controller.TaskController {
+- TaskService taskService
++ List<String> searchTasks(String)
+}
+
+
+class fiap.com.example.challenge.service.EmployeeService {
+- EmployeeRepository employeeRepository
++ Employee getEmployeeById(UUID)
++ List<Employee> getAllEmployees()
++ Employee saveEmployee(Employee)
++ void deleteEmployee(UUID)
++ Employee updateEmployee(UUID,Employee)
+}
+
+
+class fiap.com.example.challenge.config.AppConfig {
++ RestTemplate restTemplate()
+}
+
+class fiap.com.example.challenge.service.TaskService {
+- TaskRepository taskRepository
++ List<Task> getAllTasks()
++ Task saveTask(Task)
++ List<String> findTop3BySymptomOrDescription(String)
+}
+
+
+class fiap.com.example.challenge.service.ChatService {
+- ChatRepository chatRepository
++ Chat createChat(UUID,LocalDateTime,ChatStatus)
++ Chat addMessageToChat(UUID,Message)
++ Optional<Chat> getChatById(UUID)
++ List<Chat> getChatsByEmployeeId(UUID)
++ List<Chat> getChatsByEmployeeIdAndStatus(UUID,ChatStatus)
++ List<Chat> getChatsByStartTimestampAfter(LocalDateTime)
++ List<Chat> getAllChats()
++ Chat saveChat(Chat)
+}
+
+
+class fiap.com.example.challenge.dto.LoginDTO {
+- String email
+- String password
++ String getPassword()
++ void setPassword(String)
++ String getEmail()
++ void setEmail(String)
+}
+
+
+class fiap.com.example.challenge.model.chat.Chat {
+- UUID id
+- UUID employeeId
+- LocalDateTime startTimestamp
+- LocalDateTime endTimestamp
+- ChatStatus status
+- List<Message> messages
++ UUID getId()
++ void setId(UUID)
++ UUID getEmployeeId()
++ void setEmployeeId(UUID)
++ LocalDateTime getStartTimestamp()
++ void setStartTimestamp(LocalDateTime)
++ LocalDateTime getEndTimestamp()
++ void setEndTimestamp(LocalDateTime)
++ ChatStatus getStatus()
++ void setStatus(ChatStatus)
++ List<Message> getMessages()
++ void setMessages(List<Message>)
++ void addMessage(Message)
++ void removeMessage(Message)
+}
+
+
+class fiap.com.example.challenge.model.Task {
+- String number
+- LocalDateTime opened
+- LocalDateTime updated
+- String reportState
+- LocalDateTime reportResolved
+- String reportCategory
+- String reportSubcategory
+- String symptom
+- String symptomQualification
+- String assignmentGroup
+- String category
+- String assignedTo
+- String priority
+- LocalDateTime closed
+- String requester
+- String location
+- String description
+- String visibleComments1
+- String visibleComments2
+- String visibleComments3
+- String visibleComments4
+- String visibleComments5
+- String visibleComments6
+- String visibleComments7
+- String visibleComments8
+- String visibleComments9
+- String resolution
+}
+
+class fiap.com.example.challenge.dto.ChatRequestDTO {
+- UUID employeeId
+- LocalDateTime startTimestamp
+- ChatStatus status
++ UUID getEmployeeId()
++ void setEmployeeId(UUID)
++ LocalDateTime getStartTimestamp()
++ void setStartTimestamp(LocalDateTime)
++ ChatStatus getStatus()
++ void setStatus(ChatStatus)
+}
+
+
+interface fiap.com.example.challenge.repository.MessageRepository {
+}
+enum fiap.com.example.challenge.model.chat.ChatStatus {
++  ACTIVE
++  ENDED
++  PAUSED
+}
+
+class fiap.com.example.challenge.service.ApiService {
+- RestTemplate restTemplate
++ Address getAddress(String)
+- Address mapToAddress(AddressDTO)
+}
+
+
+enum fiap.com.example.challenge.model.chat.SenderType {
++  USER
++  ASSISTANT
+}
+
+class fiap.com.example.challenge.controller.EmployeeController {
+- EmployeeService employeeService
++ ResponseEntity<Employee> getEmployee(UUID)
++ Employee addEmployee(Employee)
++ List<Employee> getAllEmployees()
++ ResponseEntity<Void> deleteEmployee(UUID)
++ ResponseEntity<Employee> updateEmployee(UUID,Employee)
+}
+
+
+class fiap.com.example.challenge.controller.MessageController {
+- MessageService messageService
+- ChatService chatService
++ List<Message> getAllMessages()
++ ResponseEntity<Message> getMessageById(UUID)
++ ResponseEntity<Message> createMessage(MessageDTO)
++ ResponseEntity<Void> deleteMessage(UUID)
+}
+
+
+class fiap.com.example.challenge.service.AddressService {
+- AddressRepository addressRepository
++ Address getAddressById(UUID)
++ List<Address> getAllAddresses()
++ Address saveAddress(Address)
++ void deleteAddress(UUID)
++ Address updateAddress(UUID,Address)
+}
+
+
+class fiap.com.example.challenge.model.chat.Message {
+- UUID id
+- Chat chat
+- SenderType senderType
+- String content
+- LocalDateTime timestamp
++ UUID getId()
++ void setId(UUID)
++ Chat getChat()
++ void setChat(Chat)
++ SenderType getSenderType()
++ void setSenderType(SenderType)
++ String getContent()
++ void setContent(String)
++ LocalDateTime getTimestamp()
++ void setTimestamp(LocalDateTime)
+}
+
+
+class fiap.com.example.challenge.controller.ChatController {
+- ChatService chatService
++ Chat createChat(ChatRequestDTO)
++ Chat addMessageToChat(UUID,Message)
++ List<Chat> getChatsById(UUID)
++ List<Chat> getChatsByStatus(UUID,ChatStatus)
++ List<Chat> getChatsAfter(LocalDateTime)
++ List<Chat> listAllChats()
+}
+
+
+class fiap.com.example.challenge.model.employee.Address {
+- UUID addressId
+- String street
+- String neighborhood
+- int number
+- String city
+- String uf
+- String cep
++ UUID getAddressId()
++ void setAddressId(UUID)
++ String getStreet()
++ void setStreet(String)
++ String getNeighborhood()
++ void setNeighborhood(String)
++ int getNumber()
++ void setNumber(int)
++ String getCity()
++ void setCity(String)
++ String getUf()
++ void setUf(String)
++ String getCep()
++ void setCep(String)
+}
+
+
+enum fiap.com.example.challenge.model.employee.EmployeeFunction {
++  AMS_LEVEL
++  SERVICE_DESK
+}
+
+interface fiap.com.example.challenge.repository.EmployeeRepository {
+~ Optional<Employee> findByEmail(String)
+}
+
+class fiap.com.example.challenge.config.DataSourceConfig {
+- DataSource dataSource
++ void runDataScriptsAfterStartup()
+- void readExcelAndInsertData()
+}
+
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- fiap.com.example.challenge.repository.ChatRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- fiap.com.example.challenge.repository.TaskRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- fiap.com.example.challenge.repository.AddressRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- fiap.com.example.challenge.repository.MessageRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- fiap.com.example.challenge.repository.EmployeeRepository
+@enduml
