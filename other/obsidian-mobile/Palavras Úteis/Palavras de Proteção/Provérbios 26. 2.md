@@ -1,0 +1,1 @@
+“Como o pardal no seu vaguir, como a andorinha no seu voo, assim a maldição sem causa não encontra repouso.”

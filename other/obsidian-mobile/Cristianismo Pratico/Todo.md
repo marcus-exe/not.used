@@ -1,0 +1,6 @@
+- [ ] Ver uma forma de persistir essas notas seja via github, seja via Obsidian sync
+- [ ] Pegar a palavras do Jeová Jireh e colocar aqui no Obsidian
+- [ ] Ver uma forma de remoer, ruminar a palavra de Deus
+- [ ] Comprar os livros do Apóstolo Arão
+- [ ] Separar uma oferta de R$600,00 para o Ituaçu
+- [ ] Procurar mais sobre o seminário Jocum

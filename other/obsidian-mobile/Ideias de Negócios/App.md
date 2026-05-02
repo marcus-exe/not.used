@@ -1,0 +1,2 @@
+- App de anotações 
+- Um app que gerencia logs de diferentes aplicações 
