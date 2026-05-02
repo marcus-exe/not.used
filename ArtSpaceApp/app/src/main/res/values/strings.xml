@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ArtSpaceApp</string>
+    <string name="titulo_garotos_brincando">Garotos Brincando</string>
+    <string name="titulo_nu_1">Nu</string>
+    <string name="titulo_nu_2">Nu</string>
+    <string name="titulo_nus">Nus</string>
+    <string name="titulo_cavalo_branco">Cavalo Branco</string>
+    <string name="titulo_fonte_e_montanha">Por causa de uma fonte, amava uma montanha</string>
+    <string name="artista_enrico_bianco">Enrico Bianco</string>
+    <string name="artista_orlando_teruz">Orlando Teruz</string>
+    <string name="artista_ralph_genre">Ralph Genre</string>
+    <string name="year_2005">(2005)</string>
+    <string name="year_1987">(1987)</string>
+    <string name="year_1990">(1990)</string>
+    <string name="year_1975">(1975)</string>
+    <string name="year_1983">(1983)</string>
+    <string name="year_2022">(2022)</string>
+</resources>
