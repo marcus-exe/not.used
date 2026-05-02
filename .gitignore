@@ -1,0 +1,9 @@
+# Ignore all IntelliJ/Android Studio config files
+.idea/
+
+# Ignore Gradle files
+.gradle/
+
+# Optional: ignore build outputs
+/build/
+
