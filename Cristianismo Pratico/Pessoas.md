@@ -1,0 +1,8 @@
+- Gerson e Nina (Lavi)
+- Luis (VQC)
+- André (VQC)
+- André (MIOJS)
+- Malu e Djalma (Lavi)
+- Samuel (MIR)
+- Mika e Luana?
+- Geraldinho
