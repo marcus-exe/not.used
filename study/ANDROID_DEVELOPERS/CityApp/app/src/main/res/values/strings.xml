@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">ManausCity</string>
+
+    <!--Generic Description-->
+    <string name="generic_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A erat nam at lectus urna. Posuere ac ut consequat semper. Odio morbi quis commodo odio aenean sed adipiscing diam. A erat nam at lectus. Elit pellentesque habitant morbi tristique senectus. Porttitor leo a diam sollicitudin tempor id eu nisl nunc. Nisl purus in mollis nunc sed id semper risus. Ornare arcu odio ut sem nulla. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Nec nam aliquam sem et tortor. Ac odio tempor orci dapibus ultrices in.</string>
+
+    <!--Amazônico-->
+    <string name="amazonico_restaurant_name">Peixaria Amazônico</string>
+    <string name="amazonico_restaurant_adress">Av. Darcy Vargas, 226 - Parque Dez de Novembro, Manaus-AM,  69055-035</string>
+    <string name="amazonico_restaurant_description">No Amazônico, o cliente encontra ambientes confortáveis e temáticos, além de uma brinquedoteca com tema regional que irá encantar qualquer criança. Para uma comodidade maior, o Amazônico oferece o serviço de manobrista. Empresas e hotéis contam também com o serviço de traslado, totalmente gratuito.</string>
+
+
+    <!--Barollo-->
+    <string name="barollo_restaurant_name">Barollo</string>
+    <string name="barollo_restaurant_adress">R. Rio Ituxi, 290 - Nossa Sra. das Gracas, Manaus - AM, 69053-530</string>
+    <string name="barollo_restaurant_description">Nosso cardápio contemporâneo possui uma variedade gigantesca de opções com entradas deliciosas, frutos do mar, massas, risotos, peixes regionais, carnes nobres e pratos veganos, além de sobremesas apaixonantes. Possuimos uma adega com capacidade para duas mil garrafas de vinhos com opções para todos os gostos, além de uma excelente carta de drinks com mais de 60 opções.</string>
+
+
+    <!--Burguers & Burguers-->
+    <string name="burguers_and_burguers_name">Burguers &amp; Burguers</string>
+    <string name="burguers_and_burguers_andress">Av. Umberto Calderaro, 955-B, Loja 2, Manaus - AM</string>
+    <string name="burguers_and_burguers_description">O melhor hambúrguer de Manaus é o da 80’s Burguer &amp; Beer, segundo artigo da Revista Veja de 2017</string>
+
+
+    <!--Café com Leite-->
+    <string name="cafe_com_leite_name">Café com Leite</string>
+    <string name="cafe_com_leite_adress">R. Rio Jamary, 23 - Nossa Sra. das Gracas, Manaus - AM, 69053-560</string>
+
+
+    <!--Do Futuro Café-->
+    <string name="do_futro_cafe_name">Do Futuro Café</string>
+    <string name="do_futuro_cafe_adress">Av. Pedro Teixeira, 351 - Dom Pedro, Manaus - AM, 69040-000</string>
+
+
+    <!--Domes Burguers-->
+    <string name="domes_burguers_name">Domes Burguers</string>
+    <string name="domes_burguers_adress">Rua Paris, 4, Conj. Campos Elíseos - Planalto, Manaus - AM</string>
+
+
+    <!--Fiorentina-->
+    <string name="fiorentina_name">Fiorentina</string>
+    <string name="fiorentina_adress">Am. Shopping (Av. Djalma Batista, 482 - Parque 10 de Novembro, Manaus - AM, 69050-010)</string>
+    <string name="fiorentina_description">O Grupo Alemã é uma empresa amazonense com mais de 40 anos de atuação no mercado de alimentação.Restaurantes, lanchonetes, confeitaria e eventos fazem parte do rol de diversidade do portfólio da empresa. Em 15 de Janeiro de 1981, os recém-formados engenheiros, Raul Andrade e Sergio Band mudavam-se para Manaus. Nesta mesma época o avô de Raul, possuía um restaurante chamado “KAVAKO”, localizado no entorno da Praça Heliodoro Balbi, popularmente conhecida como Praça da Polícia. Raul se encantou com o ramo de alimentação fora do lar e atualizou o restaurante para o nome de Restaurante Fiorentina, inaugurando assim, o primeiro estabelecimento do grupo.</string>
+
+    <!--Gaucho Churrascaria-->
+    <string name="gaucho_churrascaria_name">Gaucho Churrascaria</string>
+    <string name="gaucho_churrascaria_adress">Rua Terezina, 568 - Adrianópolis, Manaus - AM, 69057-070</string>
+
+
+    <!--JSK Burguers-->
+    <string name="jsk_burguers_name">JSK Burguer</string>
+    <string name="jsk_burguers_adress"> Posto 3000 - Ao lado do Pátio Gourmet - Av. Djalma Batista, 935 - Loja 4 - São Geraldo, Manaus - AM, 69053-550</string>
+
+
+    <!--Matsuri-->
+    <string name="matsuri_name">Matsuri</string>
+    <string name="matsuri_adress">R Rio Ica 12, Quadra 22 Conj Vieiralves, Nossa Senhora Das Graças - Manaus</string>
+
+
+    <!--Morada Café-->
+    <string name="morada_cafe_name">Morada Cafe</string>
+    <string name="morada_cafe_adress">Av. Via Láctea, 10 - Aleixo, Manaus - AM, 69060-085</string>
+
+
+    <!--Morada do Peixe-->
+    <string name="morada_do_peixe_name">Morada do Peixe</string>
+    <string name="morada_do_peixe_adress">Beco Goiania Conj. Jardim Versalles - Planalto, Manaus - AM, 69044-622</string>
+
+
+    <!--Pão e Alho-->
+    <string name="pao_e_alho_name">Pão e Alho</string>
+    <string name="pao_e_alho_adress">Av. Coronel Teixeira, 9555 - Ponta Negra, Manaus - AM, 69037-000</string>
+
+
+    <!--Rancho Búfalo-->
+    <string name="rancho_bufalo_name">Rancho Búfalo</string>
+    <string name="rancho_bufalo_adress">Av. Constantino Nery, 3131 - Chapada, Manaus - AM, 69050-001</string>
+
+
+    <!--Soho Lounge-->
+    <string name="soho_lounge_name">Soho Lounge</string>
+    <string name="soho_lounge_adress">Av. Umberto Calderaro, 1712 - Adrianópolis, Manaus - AM, 69057-015</string>
+
+
+    <!--Suysei-->
+    <string name="suysei_name">Suysei</string>
+    <string name="suysei_adress">Av. Urucará, 1147 - Cachoeirinha, Manaus - AM, 69065-180</string>
+
+
+    <!--Suzuran-->
+    <string name="suzuran_name">Suzuran</string>
+    <string name="suzuran_adress">Refeição no local · Para viagem · Entrega sem contato</string>
+    <string name="suzuran_description">O trabalho à frente do endereço, invicto desde a primeira edição de VEJA MANAUS "Comer &amp; Beber", tem início bem cedo, quando Hiroya percorre os principais mercados da capital à procura dos legumes e verduras mais frescos. Seu olhar atento também busca bons exemplares dos peixes da região, empregados em receitas como o tucunaré tataki, que vem em cubos, temperado com gengibre, alho, cebolinha e shoyu e coroado com ovas de peixe-voador. Outros tipos de pescado, os do mar, chegam em remessas semanais de São Paulo. Olhete, anchova negra, atum, salmão e robalo são o ponto de partida para o combinado que reúne sashimi, tempurá, peixe grelhado, tofu, raiz de bardana, legumes cozidos, arroz e missoshiru. Dos pratos tradicionais da especialidade, é bastante requisitado o udon, preparado com carnes suína e de frango, camarão, lula, legumes e ovos. Doses de saquê, entre elas a do nacional Azuma Kirin e a do japonês Sawanotsuru, completam a refeição.</string>
+
+
+
+</resources>
