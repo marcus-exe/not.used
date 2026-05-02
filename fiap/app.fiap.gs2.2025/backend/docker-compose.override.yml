@@ -1,0 +1,13 @@
+# Override file for local development
+# This file is automatically loaded by docker-compose
+# You can customize settings here without committing them
+# Add this file to .gitignore if you want local-only overrides
+
+services:
+  api:
+    # Uncomment to enable hot reload during development
+    # volumes:
+    #   - ./TechKnowledgePills.API:/app
+    #   - ./TechKnowledgePills.Core:/src/TechKnowledgePills.Core
+    #   - ./TechKnowledgePills.Infrastructure:/src/TechKnowledgePills.Infrastructure
+    # command: ["dotnet", "watch", "run", "--urls", "http://+:8080"]

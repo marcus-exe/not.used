@@ -1,0 +1,13 @@
+{
+  "specflow": {
+    "runtime": {
+      "missingOrPendingStepsOutcome": "Ignore"
+    },
+    "stepAssemblies": [
+      {
+        "assembly": "TechKnowledgePills.Tests"
+      }
+    ]
+  }
+}
+
