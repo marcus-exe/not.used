@@ -1,0 +1,10 @@
+{
+    "server":true,
+    "bind_addr": "172.19.0.4",
+    "bootstrap_expect": 3,
+    "data_dir": "/tmp",
+    "retry_join": ["172.19.0.5", "172.19.0.3"],
+    "node_name": "consulserver02",
+    "encrypt":"y2E17bI29PG0X2bOhjRjyxE30ZpoiRjvV3J6zhOmjRM="
+
+}
