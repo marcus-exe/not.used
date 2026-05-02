@@ -1,0 +1,33 @@
+.bannerImage {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+.bannerOldMan{
+  position: relative;
+  bottom: 18rem;
+  width: 16rem;
+  height: 16rem;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+.bannerMessageBG{
+  position: relative;
+  bottom: 47rem;
+  left: 10rem;
+  width: max-content;
+  height: max-content;
+}
+
+.bannerText{
+  position: relative;
+  bottom: 16.5rem;
+  left: 1rem;
+  width: 17%;
+  height: max-content;
+  font-size: 1em;
+  font-weight: 600;
+}
