@@ -1,0 +1,7 @@
+venv/
+ai/best.pt
+runs/
+__pycache__/
+utils/input/
+utils/output/
+utils/best.pt
