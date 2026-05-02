@@ -1,0 +1,24 @@
+USE sucos;
+
+-- essa é a sintaxe usada para fazer comentários em linha única
+
+/* enquanto essa é usada para 
+múltiplas linhas  */
+
+
+ -- NESSE CASO ELE VAI SELECIONAR TUDO DESSA TABELA
+-- SELECT * FROM tbcliente;
+
+ -- AQUI TEREMOS NESSE SELEÇÃO DE TUDO DE CPF E NOME
+-- SELECT CPF, NOME FROM tbcliente; 
+
+-- AQUI TEREMOS UMA DIFERENÇA POIS TEREMOS UMA LIMITAÇÃO DE 5 REGISTROS
+-- SELECT CPF, NOME FROM tbcliente LIMIT 5; 
+
+-- DEMOS UM ALIAS NO NOME DOS CAMPOS
+-- SELECT CPF AS CPF_CLIENTE, NOME AS NOME_CLIENTE FROM tbcliente;  
+
+-- A ORDEM DE SELEÇÃO NÃO NECESSARIAMENTE SEGUE A DA TABELA
+SELECT NOME, CPF, SEXO, IDADE, DATA_NASCIMENTO FROM tbcliente;
+
+
