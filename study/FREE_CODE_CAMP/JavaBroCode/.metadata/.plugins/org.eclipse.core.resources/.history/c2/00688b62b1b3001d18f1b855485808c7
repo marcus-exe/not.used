@@ -1,0 +1,8 @@
+
+public class Main {
+	public static void main(String[] args) {
+		User user = null;
+		
+		FileInputStream fileIn = new FileInputStream("C:\\Users\\marcu\\Documents\\Code\\BroCode\\Serialization\\UserInfo.ser");
+	}
+}
