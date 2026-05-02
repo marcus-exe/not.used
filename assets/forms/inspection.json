@@ -1,0 +1,63 @@
+{
+  "key": "inspection",
+  "titulo": "Inspeção",
+  "descricao": "Registre os detalhes da inspeção realizada.",
+  "campos": [
+    {
+      "id": "inspetor",
+      "tipo": "texto",
+      "rotulo": "Nome do Inspetor",
+      "obrigatorio": true,
+      "minLength": 3,
+      "maxLength": 100
+    },
+    {
+      "id": "local",
+      "tipo": "texto",
+      "rotulo": "Local da Inspeção",
+      "obrigatorio": true,
+      "minLength": 5,
+      "maxLength": 200
+    },
+    {
+      "id": "tipo_inspecao",
+      "tipo": "selecao",
+      "rotulo": "Tipo de Inspeção",
+      "opcoes": ["Segurança", "Qualidade", "Ambiental", "Manutenção", "Outro"],
+      "obrigatorio": true
+    },
+    {
+      "id": "data_inspecao",
+      "tipo": "data",
+      "rotulo": "Data da Inspeção",
+      "obrigatorio": true
+    },
+    {
+      "id": "hora_inspecao",
+      "tipo": "hora",
+      "rotulo": "Hora da Inspeção",
+      "obrigatorio": true
+    },
+    {
+      "id": "resultado",
+      "tipo": "selecao",
+      "rotulo": "Resultado",
+      "opcoes": ["Aprovado", "Aprovado com Ressalvas", "Reprovado", "Parcial"],
+      "obrigatorio": true
+    },
+    {
+      "id": "observacoes",
+      "tipo": "multilinha",
+      "rotulo": "Observações",
+      "obrigatorio": false,
+      "maxLength": 2000
+    },
+    {
+      "id": "necessita_reinspecao",
+      "tipo": "checkbox",
+      "rotulo": "Necessita Reinspeção",
+      "obrigatorio": false
+    }
+  ]
+}
+

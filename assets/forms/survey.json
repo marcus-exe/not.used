@@ -1,0 +1,51 @@
+{
+  "key": "survey",
+  "titulo": "Pesquisa",
+  "descricao": "Responda nossa pesquisa para nos ajudar a melhorar.",
+  "campos": [
+    {
+      "id": "idade",
+      "tipo": "numero",
+      "rotulo": "Idade",
+      "obrigatorio": true,
+      "min": 13,
+      "max": 120
+    },
+    {
+      "id": "genero",
+      "tipo": "selecao",
+      "rotulo": "Gênero",
+      "opcoes": ["Masculino", "Feminino", "Outro", "Prefiro não informar"],
+      "obrigatorio": false
+    },
+    {
+      "id": "cidade",
+      "tipo": "texto",
+      "rotulo": "Cidade",
+      "obrigatorio": true,
+      "minLength": 2,
+      "maxLength": 50
+    },
+    {
+      "id": "experiencia",
+      "tipo": "selecao",
+      "rotulo": "Como você avalia sua experiência?",
+      "opcoes": ["Excelente", "Muito Boa", "Boa", "Regular", "Ruim"],
+      "obrigatorio": true
+    },
+    {
+      "id": "sugestoes",
+      "tipo": "multilinha",
+      "rotulo": "Sugestões ou comentários adicionais",
+      "obrigatorio": false,
+      "maxLength": 1000
+    },
+    {
+      "id": "data_preenchimento",
+      "tipo": "data",
+      "rotulo": "Data do Preenchimento",
+      "obrigatorio": true
+    }
+  ]
+}
+
