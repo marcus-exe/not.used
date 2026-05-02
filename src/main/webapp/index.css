@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import url('components/header/header.css');
+@import url('components/banner/banner.css');
+@import url('components/categories/categories.css');
+@import url('components/footer/footer.css');
+@import url('productsPage.css');
+@import url('cart.css');
+@import url('final-cart.css');
+
+:root{
+  --bg-primary: #FFF3E3;
+  --bg-secondary: #8F3C38;
+}
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+

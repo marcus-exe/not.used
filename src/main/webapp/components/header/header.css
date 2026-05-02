@@ -1,0 +1,32 @@
+.headerContainer {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  height: 8rem;
+  background: #FFF;
+}
+
+.logoDiv {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.headerImage {
+  width: 7.5rem;
+  height: 6rem;
+  border-radius: 100px;
+}
+
+.headertTitle {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.headerLink {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 400;
+  color: #000;
+}
