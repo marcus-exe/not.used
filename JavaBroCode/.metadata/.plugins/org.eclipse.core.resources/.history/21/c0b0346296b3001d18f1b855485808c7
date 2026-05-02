@@ -1,0 +1,9 @@
+
+public class Main {
+	public static void main(String[] args) {
+		User user = new User();  
+		user.name = "Bro";
+		user.password = "I<3pizza";
+		user.sayHello();
+	}
+}
