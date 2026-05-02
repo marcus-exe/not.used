@@ -1,0 +1,25 @@
+SELECT * FROM vendedores;
+SELECT * FROM sucos_vendas.tabela_de_vendedores;
+
+SELECT * FROM 
+vendedores as A
+INNER JOIN
+sucos_vendas.tabela_de_vendedores as B
+ON A.MATRICULA = SUBSTRING(B.MATRICULA, 3, 3);
+
+-- PEGUEI OS DADOS DA TABELA VIZINHA
+UPDATE (vendedores as A
+INNER JOIN sucos_vendas.tabela_de_vendedores as B
+ON A.MATRICULA = SUBSTRING(B.MATRICULA, 3, 3))
+SET A.FERIAS = B.DE_FERIAS;
+
+-- ////////////////////////////
+SELECT A.CPF FROM CLIENTES A
+INNER JOIN VENDEDORES B
+ON A.BAIRRO = B.BAIRRO;
+
+
+UPDATE (CLIENTES A
+INNER JOIN VENDEDORES AS B
+ON A.BAIRRO = B.BAIRRO)
+SET A.VOLUME_COMPRA = A.VOLUME_COMPRA * 1.3;
